@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Profile - Trade Ur Skills</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"/>'>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+  <div class="wrap">
+    <!-- Brand -->
+    <a href="index.html" class="brand">
+      <img src="assets/logo.png" alt="Trade Ur Skills" class="brand-logo">
+      <span>Trade Ur Skills</span>
+    </a>
+
+    <!-- Navigation -->
+    <nav>
+      <a href="signup.html" id="navSignup">Sign up</a>
+      <a href="login.html" id="navLogin">Log in</a>
+      <a href="profile.html" id="navProfile" class="hide">Profile</a>
+      <a href="messages.html" id="navMessages" class="hide">
+        Messages <span id="navMessagesBadge" class="badge hide">0</span>
+      </a>
+      <button id="themeToggle" title="Toggle theme">🌓</button>
+      <button id="logoutBtn" class="hide">Log out</button>
+    </nav>
+  </div>
+</header>
+
+
+
+
+  <main class="container">
+    <h2>Post a Skill</h2>
+    <form id="postSkillForm" class="card">
+      <label>What you offer</label>
+      <input id="offer" placeholder="e.g., Guitar lessons, 2h/week" required>
+      <label>What you want</label>
+
+      <input id="want" placeholder="e.g., Beginner coding help" required>
+      <button type="submit">Post</button>
+      <p id="msg" class="msg"></p>
+    </form>
+
+    <h3>Your Posts</h3>
+    <div id="mySkills" class="list"></div>
+
+    <h3>People who want what you offer</h3>
+    <div id="matchesWantMyOffer" class="list"></div>
+
+    <h3>People who offer what you want</h3>
+    <div id="matchesOfferMyWant" class="list"></div>
+<h3>Debug view (raw data)</h3>
+<pre id="debugSkills" style="background:#111;color:#0f0;padding:12px;border-radius:8px;overflow:auto;max-height:240px;"></pre>
+
+    <!-- Debug panel (helps us see the underlying data) -->
+    <h3>Debug view (raw data)</h3>
+    <pre id="debugSkills" style="background:#111;color:#0f0;padding:12px;border-radius:8px;overflow:auto;max-height:240px;"></pre>
+  </main>
+
+  <!-- IMPORTANT: keep script at the end -->
+  <script src="app.js"></script>
+</body>
+</html>

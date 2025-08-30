@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Messages - Trade Ur Skills</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"/>'>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .msg-row { background:#fff; padding:10px 12px; border-radius:8px; margin:8px 0; box-shadow:0 1px 6px rgba(0,0,0,0.05); }
+    .msg-meta { font-size:12px; color:#555; margin-bottom:4px; }
+    .msg-body { white-space:pre-wrap; }
+    .compose { background:#fff; padding:16px; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.05); margin:12px 0; }
+  </style>
+</head>
+<body>
+  <header>
+  <div class="wrap">
+    <!-- Brand -->
+    <a href="index.html" class="brand">
+      <img src="assets/logo.png" alt="Trade Ur Skills" class="brand-logo">
+      <span>Trade Ur Skills</span>
+    </a>
+
+    <!-- Navigation -->
+    <nav>
+      <a href="signup.html" id="navSignup">Sign up</a>
+      <a href="login.html" id="navLogin">Log in</a>
+      <a href="profile.html" id="navProfile" class="hide">Profile</a>
+      <a href="messages.html" id="navMessages" class="hide">
+        Messages <span id="navMessagesBadge" class="badge hide">0</span>
+      </a>
+      <button id="themeToggle" title="Toggle theme">🌓</button>
+      <button id="logoutBtn" class="hide">Log out</button>
+    </nav>
+  </div>
+</header>
+
+
+
+  <main class="container">
+    <h2>Messages</h2>
+
+    <section class="compose">
+      <h3>Compose</h3>
+      <label>To (username)</label>
+      <input id="toUser" placeholder="e.g., userB" required>
+      <label>Message</label>
+      <input id="messageBody" placeholder="Write something…" required>
+      <div style="margin-top:8px;">
+        <button id="sendBtn">Send</button>
+      </div>
+      <p id="msg" class="msg"></p>
+    </section>
+
+    <h3>Inbox & Outbox</h3>
+    <div id="inboxList"></div>
+  </main>
+
+  <!-- IMPORTANT: load the shared JS -->
+  <script src="app.js"></script>
+</body>
+</html>
