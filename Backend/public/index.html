@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trade Ur Skills</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Favicon (optional, add the file if you want a tab icon) -->
+  <!-- <link rel="icon" href="assets/logo-32.png" sizes="32x32" type="image/png"> -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Header (shared across pages) -->
+  <header>
+    <div class="wrap">
+      <!-- Brand -->
+      <a href="index.html" class="brand">
+        <img src="assets/logo.png" alt="Trade Ur Skills" class="brand-logo" />
+        <span>Trade Ur Skills</span>
+      </a>
+
+      <!-- Navigation -->
+      <nav>
+        <a href="signup.html" id="navSignup">Sign up</a>
+        <a href="login.html" id="navLogin">Log in</a>
+        <a href="profile.html" id="navProfile" class="hide">Profile</a>
+        <a href="messages.html" id="navMessages" class="hide">
+          Messages <span id="navMessagesBadge" class="badge hide">0</span>
+        </a>
+        <button id="themeToggle" title="Toggle theme">🌓</button>
+        <button id="logoutBtn" class="hide">Log out</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main class="container">
+    <h1>Find your perfect skill swap</h1>
+    <p class="msg">Search what people offer and want. Post yours and start trading skills.</p>
+
+    <!-- Search bar -->
+    <div class="card" style="margin:14px 0;">
+      <div class="row">
+        <input id="searchInput" placeholder="Search by username, offer, or want" />
+        <button id="searchBtn" type="button">Search</button>
+        <button id="clearBtn" type="button" class="secondary">Clear</button>
+      </div>
+      <p id="searchMsg" class="msg"></p>
+    </div>
+
+    <h3>Latest posts</h3>
+    <div id="skillsList" class="grid"></div>
+  </main>
+
+  <!-- App JS (shared across pages) -->
+  <script src="app.js"></script>
+</body>
+</html>

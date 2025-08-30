@@ -1,0 +1,216 @@
+/* =========================
+   Base + Theme Variables
+========================= */
+:root {
+  /* Dark mode defaults */
+  --bg:#0f172a;           
+  --card:#0b1226;         
+  --text:#e5e7eb;         
+  --muted:#94a3b8;        
+  --primary:#3b82f6;      
+  --primary-600:#2563eb;  
+  --accent:#22c55e;       
+  --danger:#ef4444;       
+  --chip:#0b1430;
+  --border:#1e293b;
+}
+
+:root[data-theme="light"]{
+  --bg:#f5f7fb;           
+  --card:#ffffff;         
+  --text:#0f172a;         
+  --muted:#475569;        
+  --primary:#2563eb;      
+  --primary-600:#1d4ed8;  
+  --accent:#16a34a;       
+  --danger:#dc2626;       
+  --chip:#f1f5f9;         
+  --border:#e2e8f0;       
+}
+
+/* Body background per theme */
+body {
+  margin:0;
+  min-height:100vh;
+  background: radial-gradient(1200px 600px at 10% 0%, #0b1430 0%, var(--bg) 60%);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, "Apple Color Emoji","Segoe UI Emoji";
+  line-height:1.5;
+}
+
+:root[data-theme="light"] body{
+  background: radial-gradient(1200px 600px at 10% 0%, #eaf2ff 0%, var(--bg) 60%);
+}
+
+/* Smooth transitions when switching */
+html, body, .card, .item, .compose, header, input, textarea, select, button {
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+/* =========================
+   Header
+========================= */
+header {
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(10px);
+  background: rgba(11,20,48,.6);
+  border-bottom: 1px solid var(--border);
+  z-index: 10;
+}
+:root[data-theme="light"] header{
+  background: rgba(255,255,255,.75);
+  border-bottom-color: var(--border);
+}
+header .wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 16px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: .3px;
+}
+.brand-logo {
+  height: 28px;
+  width: auto;
+  display: block;
+  border-radius: 6px; /* optional: soft corners */
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+nav a, nav button {
+  appearance: none;
+  border: 0;
+  text-decoration: none;
+  color: var(--text);
+  background: transparent;
+  padding: 8px 12px;
+  border-radius: 10px;
+  transition: .15s ease;
+  cursor: pointer;
+}
+nav a:hover, nav button:hover {
+  background: #0b1430;
+}
+:root[data-theme="light"] nav a:hover,
+:root[data-theme="light"] nav button:hover {
+  background: #f1f5f9;
+}
+
+/* Badge (for messages) */
+.badge {
+  display:inline-block;
+  min-width:20px;
+  padding:2px 6px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+  background: var(--accent);
+  color:#041019;
+  text-align:center;
+  margin-left:6px;
+}
+
+/* Theme toggle button */
+#themeToggle { padding:8px 10px; line-height:1; }
+
+/* =========================
+   Layout
+========================= */
+.container {
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 0 16px 40px;
+}
+h1,h2,h3 { margin: 8px 0 12px; }
+h1 { font-size:28px; }
+h2 { font-size:22px; }
+h3 { font-size:18px; color: var(--muted); }
+
+/* =========================
+   Cards, lists, chips
+========================= */
+.card, .item, form.card, .compose {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.15);
+}
+.grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+  gap:14px;
+}
+.card-title { font-weight:700; margin-bottom:6px; }
+
+.chip {
+  display:inline-block;
+  background: var(--chip);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  margin: 6px 6px 0 0;
+}
+
+.list .item + .item { margin-top:10px; }
+
+.view-row { display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
+.msg { color: var(--muted); }
+
+/* =========================
+   Forms
+========================= */
+label { display:block; font-size:13px; color: var(--muted); margin-top:8px; }
+input, textarea, select {
+  width:100%; padding:10px 12px; border-radius:12px;
+  background:#0a1226; border:1px solid var(--border); color: var(--text);
+  outline:none;
+}
+:root[data-theme="light"] input,
+:root[data-theme="light"] textarea,
+:root[data-theme="light"] select {
+  background:#fff;
+}
+input:focus, textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(59,130,246,.2); }
+
+button {
+  appearance:none; border:0; cursor:pointer;
+  background: var(--primary);
+  color: white;
+  padding:10px 14px;
+  border-radius:12px;
+  font-weight:600;
+}
+button:hover { background: var(--primary-600); }
+
+button.secondary { background:#30384e; }
+button.secondary:hover { background:#3a4461; }
+button.danger { background: var(--danger); }
+
+/* =========================
+   Utilities
+========================= */
+.row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.right { margin-left:auto; }
+.hide { display:none !important; }
