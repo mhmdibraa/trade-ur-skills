@@ -9,6 +9,10 @@ const path = require("path");
 // --- App init ---
 const app = express();
 console.log("Loaded server.js from:", __dirname);
+console.log("=== Booting Trade-Ur-Skills server ===");
+console.log("CWD:", process.cwd());
+console.log("DIRNAME:", __dirname);
+console.log("Using DB at:", process.env.DB_PATH || "./skills.db");
 
 // --- Middleware ---
 app.use(cors());
