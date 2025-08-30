@@ -195,6 +195,41 @@ app.get("/debug/routes", (_req, res) => {
   });
   res.json(out);
 });
+const fs = require("fs");
+const path = require("path");
+
+
+app.get("/_dbcheck", (_req, res) => {
+  const dbPath = process.env.DB_PATH || path.join(__dirname, "skills.db");
+  const result = { dbPath, exists: false, sizeBytes: null, tables: [] };
+
+  try {
+    if (fs.existsSync(dbPath)) {
+      result.exists = true;
+      result.sizeBytes = fs.statSync(dbPath).size;
+    }
+  } catch (e) {
+    result.fsError = e.message;
+  }
+// Static files
+const PUBLIC_DIR = path.join(__dirname, "public");
+console.log("Serving static from:", PUBLIC_DIR);
+try {
+  console.log("Public entries:", fs.existsSync(PUBLIC_DIR) ? fs.readdirSync(PUBLIC_DIR) : []);
+} catch {}
+app.use(express.static(PUBLIC_DIR));
+app.get("/", (_req, res) => res.sendFile(path.join(PUBLIC_DIR, "index.html")));
+  const db = new sqlite3.Database(dbPath);
+  db.all("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name", [], (err, rows) => {
+    if (err) {
+      result.sqlError = err.message;
+      db.close(() => res.status(500).json(result));
+      return;
+    }
+    result.tables = rows.map(r => r.name);
+    db.close(() => res.json(result));
+  });
+});
 
 // avoid favicon 404 noise
 app.get("/favicon.ico", (_req, res) => res.status(204).end());
