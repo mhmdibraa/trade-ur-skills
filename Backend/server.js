@@ -1,3 +1,5 @@
+console.log("DEPLOY MARKER:", new Date().toISOString());
+
 // --- Imports ---
 const express = require("express");
 const sqlite3 = require("sqlite3").verbose();
@@ -198,10 +200,14 @@ app.get("/debug/routes", (_req, res) => {
 app.get("/favicon.ico", (_req, res) => res.status(204).end());
 
 // --- Serve frontend ---
-app.use(express.static(path.join(__dirname, "../frontend")));
+const PUBLIC_DIR = path.join(__dirname, "public");
+console.log("Serving static from:", PUBLIC_DIR);
+
+app.use(express.static(PUBLIC_DIR));
 app.get("/", (_req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/index.html"));
+  res.sendFile(path.join(PUBLIC_DIR, "index.html"));
 });
+
 
 // --- Start server ---
 const PORT = process.env.PORT || 3000;
